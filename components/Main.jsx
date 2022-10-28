@@ -17,6 +17,7 @@ const Main = () => {
     })
 
     useEffect(() => {
+        setPokemons([])
         fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
         .then((response) => response.json())
         .then((allpokemon)=>{
@@ -37,12 +38,12 @@ const Main = () => {
   return (
     <div className='flex flex-col justify-center items-center'>
     <input type="text" placeholder="Search Pokemon" 
-    className="content-center border-2 border-gray-200 rounded-lg p-2.5 focus:outline-none focus:border-red-300 m-5 w-2/4"
+    className="content-center border-2 border-gray-200 rounded-lg p-2.5 focus:outline-none focus:border-red-300 m-5 w-2/4 "
     value={text}
     onChange={(e) => setText(e.target.value)}
     />
         <div className='container mx-auto'>
-            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
+            <div className='grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
     {/* using a ternary operator to check if the text input is empty or not,
     if text input not empty then filter the pokemons array and return the filtered array */}
     {text === '' ? pokemons.map((pokemon) => (

@@ -4,8 +4,6 @@ import React, {useState} from 'react'
 const PokeDetails = ({isVisible, onClose, pokeImg, pokeName, pokeHeight, pokeWeight, pokeType,pokeMoves, pokeAbilities, pokeID}) => {
     if (!isVisible) return null;
 
-    const [loaded, setLoaded] = useState(false);
-
     const handleClose = (e) => {
         if (e.target.id === 'wrapper') onClose();
     }
@@ -39,13 +37,13 @@ const PokeDetails = ({isVisible, onClose, pokeImg, pokeName, pokeHeight, pokeWei
     <div className='fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center' id='wrapper' onClick={handleClose}>
     <motion.div 
     onClick={(e) => e.stopPropagation()}   
-    // style={loaded ? {} : { display: 'none' }}
+    transition={{ delay: 10 }}
     variants={flip}
     initial="hidden"
     animate="visible"
     exit="exit"
-    className='bg-white p-4 rounded w-65 h-50 object-scale-down sm:w-1/2'>
-    <div className='flex justify-between'>
+    className='bg-white px-6 py-4 rounded w-65 h-50 h-50 sm:w-1/2'>
+    <div className='flex justify-between mb-5'>
     <p className='text-xl'>{pokeID}</p>
     <button 
     onClick={()=> onClose()}
@@ -55,24 +53,25 @@ const PokeDetails = ({isVisible, onClose, pokeImg, pokeName, pokeHeight, pokeWei
                 </button>
     </div>
     <div className='flex items-center flex-col'>
-    <img src={pokeImg} alt={pokeName} className='w-64 h-64 p-5 shadow rounded border-none' onLoad={() => setLoaded(true)}/>
+    <img src={pokeImg} alt={pokeName} className='w-44 h-44 p-5 shadow rounded border-none md:w-64 md:h-64 '/>
     <div className='flex space-x-3 pt-2 mt-3'>
                 {pokeType.map((type) => (
                     <p className = {type.type.name}>{type.type.name}</p>
                 ))}
     </div>
-    <div className='flex flex-col justify-start'>
-    <p className='text-xl capitalize mt-5 text-left'>Name: {pokeName}</p>
+    <div className='flex flex-col text-base items-center sm:text-lg '>
+    <div className='justify-center'>
+    <p className='capitalize mt-5 text-left'>Name: {pokeName}</p>
     <div className='flex'>
-    <p className='text-xl capitalize text-left'>Height: {Number(pokeHeight)*10} </p><p className='text-xl'>&nbsp;cm</p>
+    <p className=' capitalize text-left'>Height: {Number(pokeHeight)*10} </p><p>&nbsp;cm</p>
     </div>
-    <p className='text-xl capitalize text-left'>Weight: {pokeWeight} Ib</p>
+    <p className=' capitalize text-left'>Weight: {pokeWeight} Ib</p>
     </div>
-        <div className='flex gap-x-10 text-xl justify-center m-5'>
+        <div className='flex gap-x-10 justify-center p-3'>
             <div>
             <p className='underline'>Abilities</p>
             <ul className='list-disc'>
-            {pokeAbilities.slice(0,5).map((ability) => (
+            {pokeAbilities.slice(0,3).map((ability) => (
                 <li className='capitalize'>{ability.ability.name}</li>
             ))}
             </ul>
@@ -80,13 +79,13 @@ const PokeDetails = ({isVisible, onClose, pokeImg, pokeName, pokeHeight, pokeWei
             <div>
             <p className='underline'>Moves</p>
             <ul className='list-disc'>
-            {pokeMoves.slice(0,5).map((move) => (
+            {pokeMoves.slice(0,3).map((move) => (
                 <li className='capitalize'>{move.move.name}</li>
             ))}
             </ul>
             </div>
         </div>
-        
+        </div>
     </div>
     </motion.div>
     </div>
