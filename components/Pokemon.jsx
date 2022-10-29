@@ -16,7 +16,7 @@ const Pokemon = ({pokeName, pokeID, pokeImg, pokeType}) => {
                 <p className='capitalize mt-3'>{pokeName}</p>
                 <div className='flex space-x-3 pt-2'>
                   {pokeType.map((type) => (
-                    <p className = {type.type.name}>{type.type.name}</p>
+                    <p key={type.type.name} className = {type.type.name}>{type.type.name}</p>
                   ))}
                 </div>
                 </motion.div>

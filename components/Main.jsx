@@ -47,7 +47,9 @@ const Main = () => {
     {/* using a ternary operator to check if the text input is empty or not,
     if text input not empty then filter the pokemons array and return the filtered array */}
     {text === '' ? pokemons.map((pokemon) => (
-        <div onClick={() => {
+        <div 
+        key={pokemon.id}
+        onClick={() => {
         setPokestats({
                 name: pokemon.name,
                 height: pokemon.height,
@@ -65,7 +67,9 @@ const Main = () => {
         </div>
         )) : 
         pokemons.filter((pokemon) => pokemon.name.includes(text)).map((pokemon) => (
-            <div onClick={() => {
+            <div 
+            key={pokemon.id}
+            onClick={() => {
         setPokestats({
                 name: pokemon.name,
                 height: pokemon.height,

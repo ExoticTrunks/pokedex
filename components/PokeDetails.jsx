@@ -56,7 +56,7 @@ const PokeDetails = ({isVisible, onClose, pokeImg, pokeName, pokeHeight, pokeWei
     <img src={pokeImg} alt={pokeName} className='w-44 h-44 p-5 shadow rounded border-none md:w-64 md:h-64 '/>
     <div className='flex space-x-3 pt-2 mt-3'>
                 {pokeType.map((type) => (
-                    <p className = {type.type.name}>{type.type.name}</p>
+                    <p key={type.type.name} className = {type.type.name}>{type.type.name}</p>
                 ))}
     </div>
     <div className='flex flex-col text-base items-center sm:text-lg '>
@@ -72,7 +72,7 @@ const PokeDetails = ({isVisible, onClose, pokeImg, pokeName, pokeHeight, pokeWei
             <p className='underline'>Abilities</p>
             <ul className='list-disc'>
             {pokeAbilities.slice(0,3).map((ability) => (
-                <li className='capitalize'>{ability.ability.name}</li>
+                <li key={ability.ability.name} className='capitalize'>{ability.ability.name}</li>
             ))}
             </ul>
             </div>
@@ -80,7 +80,7 @@ const PokeDetails = ({isVisible, onClose, pokeImg, pokeName, pokeHeight, pokeWei
             <p className='underline'>Moves</p>
             <ul className='list-disc'>
             {pokeMoves.slice(0,3).map((move) => (
-                <li className='capitalize'>{move.move.name}</li>
+                <li key={move.move.name} className='capitalize'>{move.move.name}</li>
             ))}
             </ul>
             </div>
