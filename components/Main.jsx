@@ -66,7 +66,7 @@ const Main = () => {
         />
         </div>
         )) : 
-        pokemons.filter((pokemon) => pokemon.name.includes(text)).map((pokemon) => (
+        pokemons.filter((pokemon) => pokemon.name.includes(text.toLowerCase())).map((pokemon) => (
             <div 
             key={pokemon.id}
             onClick={() => {
