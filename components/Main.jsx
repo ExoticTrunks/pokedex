@@ -15,16 +15,18 @@ const Main = () => {
         stats: [],
         types: [],
     })
+    const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
-        setPokemons([])
+        setIsLoading(true);
         fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
         .then((response) => response.json())
         .then((allpokemon)=>{
             allpokemon.results.forEach((pokemon)=>{
                 pokeDetails(pokemon)
+                
             })
-
+            setIsLoading(false);
     })
     }, [])
 
