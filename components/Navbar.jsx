@@ -9,7 +9,7 @@ export class Navbar extends Component {
             <div className='container flex flex-wrap justify-center items-center mx-auto'>
                 <a href="#" className="flex items-center gap-3">
                     <Image src={PokeballImg} alt="Pokeball" width={50} height={50} className='mr-3'/>
-                    <span className='self-center text-xl font-semibold whitespace-nowrap text-white'>Kento Reigon Pokedex</span>
+                    <span className='self-center text-xl font-semibold whitespace-nowrap text-white'>Kanto Reigon Pokedex</span>
                 </a>
             </div>
         </nav>
