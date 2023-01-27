@@ -24,7 +24,6 @@ const Main = () => {
         .then((allpokemon)=>{
             allpokemon.results.forEach((pokemon)=>{
                 pokeDetails(pokemon)
-                
             })
             setIsLoading(false);
     })
@@ -44,6 +43,7 @@ const Main = () => {
     value={text}
     onChange={(e) => setText(e.target.value)}
     />
+    {isLoading ? <div>Loading...</div> : (
         <div className='container mx-auto'>
             <div className='grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
     {/* using a ternary operator to check if the text input is empty or not,
@@ -88,7 +88,7 @@ const Main = () => {
             /></div>
         ))}
             </div>
-        </div>
+        </div>)}
         <PokeDetails isVisible={showDetails} onClose={()=>setShowDetails(false)} pokeImg={pokestats.img} pokeName={pokestats.name} pokeHeight={pokestats.height} pokeWeight={pokestats.weight}
         pokeType={pokestats.types} pokeMoves={pokestats.moves} pokeID={pokestats.id} pokeAbilities={pokestats.abilities}
         ></PokeDetails>
