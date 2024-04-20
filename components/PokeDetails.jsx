@@ -54,7 +54,7 @@ const PokeDetails = ({isVisible, onClose, pokeImg, pokeName, pokeHeight, pokeWei
                 </button>
     </div>
     <div className='flex items-center flex-col'>
-    <Image src={pokeImg} alt={pokeName} className='w-44 h-44 p-5 shadow rounded border-none md:w-64 md:h-64 '/>
+    <Image src={pokeImg} alt={pokeName} className='w-44 h-44 p-5 shadow rounded border-none md:w-64 md:h-64  ' height={500} width={500}/>
     <div className='flex space-x-3 pt-2 mt-3'>
                 {pokeType.map((type) => (
                     <p key={type.type.name} className = {type.type.name}>{type.type.name}</p>
