@@ -22,11 +22,12 @@ const Main = () => {
         fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
         .then((response) => response.json())
         .then((allpokemon)=>{
-            Promise.all(allpokemon.results.map(pokemon => pokeDetails(pokemon)))
-                .then(() => setIsLoading(false));
-        })
+            allpokemon.results.forEach((pokemon)=>{
+                pokeDetails(pokemon)
+            })
+            setIsLoading(false);
+    })
     }, [])
-    
 
     const pokeDetails = (pokemon) => {
         fetch(pokemon.url)
