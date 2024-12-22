@@ -49,7 +49,7 @@ const Main = () => {
                 name: pokemon.name,
                 height: pokemon.height,
                 weight: pokemon.weight,
-                img: pokemon.sprites.other.home.front_default,
+                img: pokemon.sprites.other.dream_world.front_default,
                 moves: pokemon.moves,
                 id: pokemon.id,
                 types: pokemon.types,
