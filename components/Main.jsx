@@ -22,20 +22,15 @@ const Main = () => {
         fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
         .then((response) => response.json())
         .then((allpokemon)=>{
-            allpokemon.results.forEach((pokemon)=>{
-                pokeDetails(pokemon)
-            })
-            setIsLoading(false);
-    })
+            const promises = allpokemon.results.map((pokemon) => fetch(pokemon.url).then((res) => res.json()));
+            Promise.all(promises).then((pokeData) => {
+                pokeData.sort((a, b) => a.id - b.id);
+                setPokemons(pokeData);
+                setIsLoading(false);
+            });
+        })
     }, [])
 
-    const pokeDetails = (pokemon) => {
-        fetch(pokemon.url)
-        .then((response) => response.json())
-        .then(((pokeData)=>{
-            setPokemons((pokemons) => [...pokemons, pokeData])
-            }))
-    }
   return (
     <div className='flex flex-col justify-center items-center'>
     <input type="text" placeholder="Search Pokemon" 
@@ -46,8 +41,6 @@ const Main = () => {
     {isLoading ? <div>Loading...</div> : (
         <div className='container mx-auto'>
             <div className='grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
-    {/* using a ternary operator to check if the text input is empty or not,
-    if text input not empty then filter the pokemons array and return the filtered array */}
     {text === '' ? pokemons.map((pokemon) => (
         <div 
         key={pokemon.id}
